@@ -7,6 +7,7 @@ import InsightDetail from './components/InsightDetail';
 import Subscribe from './components/Subscribe';
 import ScriptureLibrary from './components/ScriptureLibrary';
 import ScriptureDetail from './components/ScriptureDetail';
+import WisdomAssistant from './components/WisdomAssistant';
 import './index.css';
 
 function App() {
@@ -78,6 +79,7 @@ function HomePage() {
         </Link>
       </section>
 
+      <WisdomAssistant />
       <Subscribe />
     </div>
   );

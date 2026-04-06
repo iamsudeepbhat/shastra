@@ -909,3 +909,199 @@ body {
   padding: 80px 20px;
   color: #888;
 }
+
+/* ── Wisdom Assistant ── */
+.wisdom-section {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  padding: 70px 20px;
+  margin-top: 60px;
+}
+
+.wisdom-container {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.wisdom-header {
+  text-align: center;
+  margin-bottom: 32px;
+  color: white;
+}
+
+.wisdom-header h2 {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.wisdom-header p {
+  color: #aaa;
+  font-size: 1.05rem;
+}
+
+.wisdom-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.wisdom-input {
+  width: 100%;
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid #333;
+  background: rgba(255,255,255,0.05);
+  color: white;
+  font-size: 1rem;
+  font-family: inherit;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.wisdom-input::placeholder { color: #666; }
+.wisdom-input:focus { border-color: #ff6b35; }
+
+.wisdom-btn {
+  align-self: flex-end;
+  padding: 12px 28px;
+  background: #ff6b35;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.2s;
+}
+
+.wisdom-btn:hover:not(:disabled) { background: #e85d2a; }
+.wisdom-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.wisdom-examples { margin-top: 20px; }
+
+.wisdom-examples p {
+  color: #666;
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+}
+
+.example-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.example-chip {
+  background: rgba(255,255,255,0.06);
+  color: #bbb;
+  border: 1px solid #333;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  text-align: left;
+}
+
+.example-chip:hover {
+  background: rgba(255,107,53,0.15);
+  color: #ff6b35;
+  border-color: #ff6b35;
+}
+
+.wisdom-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 40px 0;
+  color: #aaa;
+}
+
+.wisdom-spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid rgba(255,107,53,0.2);
+  border-top-color: #ff6b35;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.wisdom-error {
+  color: #ff6b6b;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.wisdom-result {
+  margin-top: 32px;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.wisdom-shloka {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,107,53,0.3);
+  border-radius: 12px;
+  padding: 28px;
+  margin-bottom: 16px;
+  color: white;
+}
+
+.wisdom-verse-label {
+  font-size: 0.9rem;
+  color: #ff6b35;
+  font-weight: 600;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.wisdom-shloka .sanskrit,
+.wisdom-shloka .hindi,
+.wisdom-shloka .english {
+  margin-bottom: 12px;
+  color: #ccc;
+}
+
+.wisdom-shloka strong { color: white; }
+
+.wisdom-explanation {
+  background: rgba(255,107,53,0.1);
+  border-left: 3px solid #ff6b35;
+  border-radius: 0 8px 8px 0;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.wisdom-explanation h4 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #ff6b35;
+  margin-bottom: 8px;
+}
+
+.wisdom-explanation p {
+  color: #ddd;
+  line-height: 1.7;
+}
+
+.wisdom-reset {
+  background: transparent;
+  color: #666;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.wisdom-reset:hover { color: #aaa; border-color: #555; }
