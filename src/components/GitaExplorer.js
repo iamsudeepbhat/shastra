@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { db } from '../firebase';
-import { collection, query, where, getDocs, orderBy } from 'firebase/firestore';
+import { collection, query, where, getDocs } from 'firebase/firestore';
 
 const GitaExplorer = () => {
   const [chapters, setChapters] = useState([]);
@@ -35,14 +35,14 @@ const GitaExplorer = () => {
     try {
       const q = query(
         collection(db, 'shlokas'),
-        where('chapter', '==', chapterNum),
-        orderBy('verse')
+        where('chapter', '==', chapterNum)
       );
       const snapshot = await getDocs(q);
       const data = snapshot.docs.map(doc => ({
         id: doc.id,
         ...doc.data()
-      }));
+      })).sort((a, b) => a.verse - b.verse);
+      
       setShlokas(data);
       setSelectedChapter(chapterNum);
       setSelectedTag('All');
