@@ -5,6 +5,8 @@ import AdminPanel from './components/AdminPanel';
 import Insights from './components/Insights';
 import InsightDetail from './components/InsightDetail';
 import Subscribe from './components/Subscribe';
+import ScriptureLibrary from './components/ScriptureLibrary';
+import ScriptureDetail from './components/ScriptureDetail';
 import './index.css';
 
 function App() {
@@ -29,7 +31,9 @@ function App() {
         <main className="main-content">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/explorer" element={<GitaExplorer />} />
+            <Route path="/explorer" element={<ScriptureLibrary />} />
+            <Route path="/scripture/gita" element={<GitaExplorer />} />
+            <Route path="/scripture/:id" element={<ScriptureDetail />} />
             <Route path="/insights" element={<Insights />} />
             <Route path="/insights/:id" element={<InsightDetail />} />
             <Route path="/admin" element={<AdminPanel />} />

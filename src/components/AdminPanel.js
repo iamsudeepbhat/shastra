@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { db } from '../firebase';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, getDocs } from 'firebase/firestore';
 
 const AdminPanel = () => {
   const [formData, setFormData] = useState({
+    scriptureId: 'gita',
     sanskrit: '',
     hindi: '',
     english: '',
@@ -13,10 +14,20 @@ const AdminPanel = () => {
     ytVideoId: ''
   });
 
+  const [scriptures, setScriptures] = useState([{ id: 'gita', name: 'Bhagavad Gita' }]);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
 
   const availableTags = ['Corporate', 'Personal', 'Leadership', 'Inner Battle'];
+
+  useEffect(() => {
+    getDocs(collection(db, 'scriptures')).then(snap => {
+      if (!snap.empty) {
+        setScriptures(snap.docs.map(d => ({ id: d.id, name: d.data().name })));
+        setFormData(prev => ({ ...prev, scriptureId: snap.docs[0].id }));
+      }
+    }).catch(() => {});
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -48,6 +59,7 @@ const AdminPanel = () => {
 
     try {
       await addDoc(collection(db, 'shlokas'), {
+        scriptureId: formData.scriptureId,
         sanskrit: formData.sanskrit,
         hindi: formData.hindi,
         english: formData.english,
@@ -60,6 +72,7 @@ const AdminPanel = () => {
 
       setMessage('✓ Shloka added successfully! It will appear on the site within 5 seconds.');
       setFormData({
+        scriptureId: formData.scriptureId,
         sanskrit: '',
         hindi: '',
         english: '',
@@ -85,6 +98,20 @@ const AdminPanel = () => {
         <p className="subtitle">Add new shlokas to the database</p>
 
         <form onSubmit={handleSubmit} className="admin-form">
+          <div className="form-group">
+            <label htmlFor="scriptureId">Scripture *</label>
+            <select
+              id="scriptureId"
+              name="scriptureId"
+              value={formData.scriptureId}
+              onChange={handleInputChange}
+            >
+              {scriptures.map(s => (
+                <option key={s.id} value={s.id}>{s.name}</option>
+              ))}
+            </select>
+          </div>
+
           <div className="form-group">
             <label htmlFor="sanskrit">Sanskrit *</label>
             <textarea

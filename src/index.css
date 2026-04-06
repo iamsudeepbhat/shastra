@@ -591,6 +591,90 @@ body {
   }
 }
 
+/* ── Scripture Library ── */
+.scripture-library-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.library-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.library-header h1 {
+  font-size: 2.2rem;
+  color: #2c2c2c;
+}
+
+.library-header p {
+  color: #666;
+  margin-top: 8px;
+}
+
+.scriptures-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.scripture-card {
+  background: white;
+  border-radius: 12px;
+  padding: 32px 28px;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.scripture-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.scripture-icon {
+  font-size: 2.5rem;
+}
+
+.scripture-card h2 {
+  font-size: 1.3rem;
+  color: #2c2c2c;
+}
+
+.scripture-desc {
+  color: #666;
+  font-size: 0.95rem;
+  flex: 1;
+}
+
+.scripture-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.scripture-language {
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.scripture-count {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #ff6b35;
+}
+
+.scripture-count.coming-soon {
+  color: #bbb;
+  font-style: italic;
+}
+
 /* ── Insights ── */
 .insights-page {
   max-width: 1100px;
