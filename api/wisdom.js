@@ -53,8 +53,8 @@ Be specific to their situation. Do not be generic. Do not repeat the shloka text
 
     if (!response.ok) {
       const err = await response.text();
-      console.error('Gemini API error:', err);
-      return res.status(500).json({ error: 'AI service error' });
+      console.error('Gemini API error status:', response.status, err);
+      return res.status(500).json({ error: 'AI service error', detail: err.slice(0, 200) });
     }
 
     const data = await response.json();
