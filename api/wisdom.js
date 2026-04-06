@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Missing query or shlokas' });
   }
 
-  const apiKey = process.env.CLAUDE_API_KEY;
+  const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
     return res.status(500).json({ error: 'API key not configured' });
   }
@@ -39,35 +39,36 @@ Choose the single most relevant shloka for this situation. Respond in this exact
 Be specific to their situation. Do not be generic. Do not repeat the shloka text in the explanation.`;
 
   try {
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': apiKey,
-        'anthropic-version': '2023-06-01'
-      },
-      body: JSON.stringify({
-        model: 'claude-haiku-4-5-20251001',
-        max_tokens: 300,
-        messages: [{ role: 'user', content: prompt }]
-      })
-    });
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
+          generationConfig: { maxOutputTokens: 300, temperature: 0.3 }
+        })
+      }
+    );
 
     if (!response.ok) {
       const err = await response.text();
-      console.error('Claude API error:', err);
-      return res.status(500).json({ error: 'Claude API error' });
+      console.error('Gemini API error:', err);
+      return res.status(500).json({ error: 'AI service error' });
     }
 
     const data = await response.json();
-    const text = data.content[0].text.trim();
+    const text = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
 
-    // Parse JSON from response
+    if (!text) return res.status(500).json({ error: 'Empty response from AI' });
+
     const jsonMatch = text.match(/\{[\s\S]*\}/);
     if (!jsonMatch) return res.status(500).json({ error: 'Invalid response format' });
 
     const result = JSON.parse(jsonMatch[0]);
     const chosenShloka = shlokas[result.shlokaIndex - 1];
+
+    if (!chosenShloka) return res.status(500).json({ error: 'Invalid shloka selection' });
 
     return res.status(200).json({
       shloka: chosenShloka,
