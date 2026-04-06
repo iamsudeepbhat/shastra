@@ -54,20 +54,20 @@ function HomePage() {
       </section>
 
       <section className="features">
-        <div className="feature-card">
+        <Link to="/explorer" className="feature-card">
           <h3>📚 Scripture Library</h3>
           <p>Browse the Bhagavad Gita by chapter and verse</p>
         </div>
-        <div className="feature-card">
+        <Link to="/explorer" className="feature-card">
           <h3>🏷️ Context Tags</h3>
           <p>Filter verses by Corporate, Personal, Leadership, or Inner Battle</p>
         </div>
-        <div className="feature-card">
+        <Link to="/explorer" className="feature-card">
           <h3>🌍 Multilingual</h3>
           <p>Read Sanskrit, Hindi, and English translations side by side</p>
         </div>
       </section>
-    </div>
+    </Link>
   );
 }
 
