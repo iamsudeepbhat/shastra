@@ -590,3 +590,238 @@ body {
     justify-content: center;
   }
 }
+
+/* ── Insights ── */
+.insights-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.insights-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.insights-header h1 {
+  font-size: 2.2rem;
+  color: #2c2c2c;
+}
+
+.insights-header p {
+  color: #666;
+  margin-top: 8px;
+}
+
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.insight-card {
+  background: white;
+  border-radius: 12px;
+  padding: 28px;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.insight-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.insight-tag {
+  display: inline-block;
+  background: #fff3ed;
+  color: #ff6b35;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.insight-card h2 {
+  font-size: 1.2rem;
+  color: #2c2c2c;
+  line-height: 1.4;
+}
+
+.insight-excerpt {
+  color: #666;
+  font-size: 0.95rem;
+  flex: 1;
+}
+
+.insight-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.insight-scripture {
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.read-more {
+  color: #ff6b35;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* ── Insight Detail ── */
+.insight-detail-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.back-link {
+  color: #ff6b35;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 24px;
+}
+
+.insight-article {
+  background: white;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.insight-article h1 {
+  font-size: 2rem;
+  color: #2c2c2c;
+  margin: 12px 0;
+}
+
+.article-body p {
+  color: #444;
+  margin-bottom: 16px;
+  line-height: 1.8;
+}
+
+.shloka-reference {
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 2px solid #f0ece4;
+}
+
+.shloka-reference h3 {
+  font-size: 1.1rem;
+  color: #888;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.yt-embed {
+  margin-top: 24px;
+}
+
+.yt-embed h4 {
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.yt-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.yt-wrapper iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: none;
+}
+
+/* ── Subscribe ── */
+.subscribe-section {
+  background: #1a1a2e;
+  color: white;
+  padding: 60px 20px;
+  margin-top: 60px;
+  text-align: center;
+}
+
+.subscribe-content h2 {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+}
+
+.subscribe-content p {
+  color: #aaa;
+  margin-bottom: 24px;
+}
+
+.subscribe-form {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.subscribe-input {
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  width: 300px;
+  outline: none;
+}
+
+.subscribe-btn {
+  padding: 12px 28px;
+  background: #ff6b35;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.subscribe-btn:hover {
+  background: #e85d2a;
+}
+
+.subscribe-success {
+  color: #4caf50;
+  margin-top: 16px;
+  font-weight: 600;
+}
+
+.subscribe-error {
+  color: #ff6b6b;
+  margin-top: 16px;
+}
+
+.loading-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  color: #888;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  color: #888;
+}

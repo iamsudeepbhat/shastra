@@ -2,6 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import GitaExplorer from './components/GitaExplorer';
 import AdminPanel from './components/AdminPanel';
+import Insights from './components/Insights';
+import InsightDetail from './components/InsightDetail';
+import Subscribe from './components/Subscribe';
 import './index.css';
 
 function App() {
@@ -17,6 +20,7 @@ function App() {
             <nav className="nav">
               <Link to="/" className="nav-link">Home</Link>
               <Link to="/explorer" className="nav-link">Scripture Library</Link>
+              <Link to="/insights" className="nav-link">Insights</Link>
               <Link to="/admin" className="nav-link">Admin</Link>
             </nav>
           </div>
@@ -26,6 +30,8 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/explorer" element={<GitaExplorer />} />
+            <Route path="/insights" element={<Insights />} />
+            <Route path="/insights/:id" element={<InsightDetail />} />
             <Route path="/admin" element={<AdminPanel />} />
           </Routes>
         </main>
@@ -58,15 +64,17 @@ function HomePage() {
           <h3>📚 Scripture Library</h3>
           <p>Browse the Bhagavad Gita by chapter and verse</p>
         </Link>
-        <Link to="/explorer" className="feature-card">
-          <h3>🏷️ Context Tags</h3>
-          <p>Filter verses by Corporate, Personal, Leadership, or Inner Battle</p>
+        <Link to="/insights" className="feature-card">
+          <h3>💡 Insights</h3>
+          <p>Ancient wisdom applied to modern life situations</p>
         </Link>
         <Link to="/explorer" className="feature-card">
           <h3>🌍 Multilingual</h3>
           <p>Read Sanskrit, Hindi, and English translations side by side</p>
         </Link>
       </section>
+
+      <Subscribe />
     </div>
   );
 }

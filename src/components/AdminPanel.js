@@ -9,7 +9,8 @@ const AdminPanel = () => {
     english: '',
     chapter: '',
     verse: '',
-    tags: []
+    tags: [],
+    ytVideoId: ''
   });
 
   const [loading, setLoading] = useState(false);
@@ -53,6 +54,7 @@ const AdminPanel = () => {
         chapter: parseInt(formData.chapter),
         verse: parseInt(formData.verse),
         tags: formData.tags,
+        ytVideoId: formData.ytVideoId || '',
         createdAt: new Date()
       });
 
@@ -63,7 +65,8 @@ const AdminPanel = () => {
         english: '',
         chapter: '',
         verse: '',
-        tags: []
+        tags: [],
+        ytVideoId: ''
       });
 
       setTimeout(() => setMessage(''), 5000);
@@ -148,6 +151,18 @@ const AdminPanel = () => {
                 min="1"
               />
             </div>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="ytVideoId">YouTube Video ID (optional)</label>
+            <input
+              id="ytVideoId"
+              type="text"
+              name="ytVideoId"
+              value={formData.ytVideoId}
+              onChange={handleInputChange}
+              placeholder="e.g. dQw4w9WgXcQ (the part after ?v= in YouTube URL)"
+            />
           </div>
 
           <div className="form-group">
