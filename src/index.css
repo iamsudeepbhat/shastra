@@ -1069,7 +1069,19 @@ body {
   color: #ccc;
 }
 
-.wisdom-shloka strong { color: white; }
+.wisdom-shloka strong { color: #ff6b35; }
+
+.wisdom-shloka .sanskrit p,
+.wisdom-shloka .hindi p,
+.wisdom-shloka .english p {
+  color: #e8e8e8;
+}
+
+.wisdom-shloka .sanskrit strong,
+.wisdom-shloka .hindi strong,
+.wisdom-shloka .english strong {
+  color: #ff6b35;
+}
 
 .wisdom-explanation {
   background: rgba(255,107,53,0.1);
